@@ -1,0 +1,104 @@
+- Key is only for virtual DOM not for element.
+- If I have data then using map I don't need to create UI multiple times.
+- Falsy values: - Null, Undefined, empty, zero etc.
+- If I want to write JS code in jsx we write it inside {}.
+- Inline arrow functions are less efficient than separate functions in jsx.
+- Closing tag jsx me dena anivarya hai, HTML me chal jaata.
+
+
+# States & Props:-
+- Passing data via props from Parent -> Child.
+- Passing data via events from Child -> Parent.
+
+- Functional components are stateless by default, kyonki hame data store karne ke liye kuch suvidha hai nhi. So we use useState to store state, which we can use it if we need.
+
+- Props to pass data.
+- States to store data.
+(Dono me re-render hota hai)
+
+- We can communicate from child -> parent by emiting events or callback functions or invoking functions using props; but we can manipulate props in child. (Child sirf data leta hai)
+- We can manipulate the state of parent components from child component by using callback functions passed as props.
+
+
+# useState:-
+ - useState hook in returns an array with two elements.
+ - Ideally whatever value we get from useState it should be IMMUTABLE.
+ - When second element of useState array triggered then whole component gets re-paint.
+ - Pulling the state up means kind of Hierarchial inheritance, jab parent comp paint honga toh uske bacche bhi repaint honge.
+
+# filter method ek naya array banata hai, existing array ko change nahi karta hai.
+
+#React.StrictMode:-
+- <React.StrictMode><App/></React.StrictMode> => Strict mode gives whatever error at compile time, when we deploy on server then it doesn't work.
+- Just coz of 'React.StrictMode' component render twiced, in prod we remove it.
+
+#ReactDom:-
+- ReactDom library deals with converting updated virtual dom into Actual browser dom, and it is platform specific.
+- React library deals with only components, also it is platform independent.
+
+#Form:-
+ - Form ke andar jo bhi button hota hai wo by default submit type ka hota hai.
+ 
+ - input field me agar hum value attribute use karte hai toh wo 2 way binding hota hai.
+
+#useContext:-
+ - We will use useContext when state is used in multiple components.
+ - If function is not export default only export then have to use {} braces while import.
+ - default export file 1 hi hoti hai.
+
+#useReducer:-
+ - Use when the logic to maintain state is complex.
+ - Reducer is a pure function matlab isko bahar wale functions se kuch kena dena nahi hota.
+ - Complicated state management work we shifted in store folder and App component works related to UI only.
+
+ #UseCallback:-
+ - Consider a scenario where you have a parent component and a child component. The parent component renders the child component and passes a callback function as a prop to the child component. Now, if the callback function is created inline in the parent component, it will be recreated on every render of the parent component. This can lead to unnecessary re-renders of the child component, impacting performance.
+ Using useCallback can help address this issue by memoizing the callback function.
+
+
+# React hooks:-
+ useState, useRef, useEffect, useCallback, useContext, useReducer, useMemo
+
+# React-Router hooks:-
+ useNavigate, useLoaderData, useActionData
+
+
+# store is immutable.
+
+# react-router-dom:-
+1. BrowserRouter (renamed as Router)
+This is the main wrapper that enables routing in your app.
+Think of it as the “book cover” that holds all the pages (routes) together. It ensures the app knows how to handle different URLs.
+
+2. Routes
+This is like the “table of contents.” It helps define which page (component) to show for each route (URL).
+
+3. Route
+Each Route is a specific page (or a “chapter”) in your story. It tells the app:
+path: Which URL to match (e.g., /about).
+element: What to display for this URL (e.g., the About component).
+
+4. Outlet
+The <Outlet> component in React Router DOM is used to define a placeholder where child routes will be rendered. It acts as a dynamic area within a parent component, allowing nested routes to display their content.
+
+
+#NavLink
+NavLink is a smart link that highlights the active page automatically
+
+Like the regular Link, it navigates between pages without reloading the page.
+
+Automatically adds an active class (or custom class) to the link when its route is the current one, helping users see which page they are on.
+
+You can customize the active state with the isActive prop or apply custom styles.
+
+
+
+# AXIOS VS FETCH API 
+
+Axios makes HTTP requests easier with automatic JSON parsing and built-in tools like interceptors, while Fetch is simpler but requires more manual code.
+
+Interceptors in Axios let you run custom code before requests (like adding tokens) or after responses (like hiding loaders or handling errors globally).
+
+
+🔐 What is CORS
+CORS (Cross-Origin Resource Sharing) is a browser security feature that blocks requests between different domains unless the server says it’s okay.

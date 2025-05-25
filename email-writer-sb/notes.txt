@@ -1,0 +1,88 @@
+@RestController = @Controller + @ResponseBody
+It tells Spring that this class will handle HTTP requests and return JSON/XML responses instead of a view (HTML).
+
+@RequestMapping is used to map HTTP requests to a specific method or class in a Spring Boot controller.
+
+ResponseEntity<T> allows full control over the HTTP response.
+This means the method will return an HTTP response with a body of type String.
+Adds a custom header Custom-Header: SomeValue to the response.
+return ResponseEntity.ok().header("Custom-Header", "SomeValue").body("Email Sent!");
+
+
+How Spring Boot Automatically Parses JSON with @RequestBody?
+Spring Boot uses Jackson (a built-in JSON processor) to automatically convert JSON from the request into a Java object when using @RequestBody.
+
+How JSON is Converted Manually (Without @RequestBody)?
+ObjectMapper (from Jackson library) converts the raw JSON string into a Java object.
+
+@Data is a Lombok annotation that automatically generates:
+✔ Getters and Setters
+✔ toString() Method
+✔ equals() and hashCode() Methods
+✔ A Constructor for Final Fields
+
+
+
+What is @Service?
+@Service is a Spring annotation used to mark a class as a service layer component.
+It tells Spring that this class contains business logic and should be managed as a Spring Bean (for dependency injection).
+
+1️⃣ Without @Service (Manual Object Creation) 😫
+If we don’t use @Service, we have to manually create an object:
+public class EmailService {
+    public String sendEmail() {
+        return "Email Sent!";
+    }
+}
+// Manually creating object
+public class EmailGeneratorController {
+    private EmailService emailService = new EmailService(); // Manual Dependency
+}
+
+2️⃣ With @Service (Spring Manages It 🚀)
+Now, Spring will manage the service class automatically:
+import org.springframework.stereotype.Service;
+
+@Service // Marks this as a service layer component
+public class EmailService {
+    public String sendEmail() {
+        return "Email Sent!";
+    }
+}
+
+3️⃣ Using @Autowired to Inject the Service
+@RestController
+@RequestMapping("/api/email")
+public class EmailGeneratorController {
+    @Autowired
+    private final EmailService emailService;
+    // Constructor Injection
+    public EmailGeneratorController(EmailService emailService) {
+        this.emailService = emailService;
+    }
+    @GetMapping("/send")
+    public String sendEmail() {
+        return emailService.sendEmail(); // Calls the service method
+    }
+}
+
+
+
+Common Layers in a Spring Boot Application
+Controller Layer (@RestController) → Handles HTTP requests
+Service Layer (@Service) → Contains business logic
+Repository Layer (@Repository) → Interacts with the database
+
+Spring WebFlux (Non-blocking) – Self-Service
+Now, imagine a self-service restaurant:
+You order food and leave.
+The kitchen cooks in the background.
+When your food is ready, they notify you.
+You can do other things while waiting!
+In Spring WebFlux, this means:
+✔ One thread can handle many requests at the same time.
+✔ If a request takes time, the thread is free to handle other users.
+✔ Ideal for high-traffic, real-time apps.
+
+🌍 What is WebClient?
+🔹 WebClient is a modern, non-blocking HTTP client in Spring WebFlux.
