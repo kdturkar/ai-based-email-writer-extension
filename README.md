@@ -4,9 +4,13 @@ An intelligent Chrome extension that automates email reply generation using Goog
 🔍 Features
 
 📨 Automatically generates replies based on email content
+
 ⚙️ Integrates with Gemini API for AI-powered suggestions
+
 💬 Offers different response tones (formal, friendly, concise, etc.)
+
 🖥️ React-based UI with a smooth and intuitive experience
+
 🛡️ Spring Boot backend for secure and efficient processing
 
 🛠️ Tech Stack
