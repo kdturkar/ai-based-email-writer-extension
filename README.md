@@ -14,6 +14,7 @@ An intelligent Chrome extension that automates email reply generation using Goog
 🛡️ Spring Boot backend for secure and efficient processing
 
 
+
 🛠️ Tech Stack
 
 Frontend: React, HTML5, CSS3, TypeScript
